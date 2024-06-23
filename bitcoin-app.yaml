@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bitcoin-price-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bitcoin-price
+  template:
+    metadata:
+      labels:
+        app: bitcoin-price
+    spec:
+      containers:
+      - name: bitcoin-price
+        image: bitcoin-price-app:latest  # Asigură-te că acesta este tag-ul corect
+        ports:
+        - containerPort: 80
